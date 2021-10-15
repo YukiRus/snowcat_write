@@ -5,7 +5,7 @@
 
 ### 使用已构建版本
 
-[![下载](https://img.shields.io/badge/50M-下载--0.2.0--2110.Dev-green.svg)](https://yukirus.com)
+[![下载](https://img.shields.io/badge/50M-下载--0.2.0--2110.Dev-green.svg)](https://github.com/YukiRus/snowcat_write/releases/download/v0.2.0-2110.Dev/SnowCatWrite-Setup.exe)
 
 - 下载后按提示安装即可使用
 
