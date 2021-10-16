@@ -74,7 +74,7 @@ export default {
   methods:{
 
     findWindowSize: function() {
-        //获取窗口宽度
+        // 获取窗口宽度
         if (window.innerWidth)
             this.winWidth = window.innerWidth;
         else if ((document.body) && (document.body.clientWidth))

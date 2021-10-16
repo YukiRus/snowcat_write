@@ -17,6 +17,28 @@
 npm install
 ```
 
+- npm install 执行完毕之后，打开项目目录/node_modules/@electron/get/dist/cjs/artifact-utils.js
+
+```js
+// 注释掉以下行
+const path = mirrorVar('customDir', opts, details.version).replace('{{ version }}', details.version.replace(/^v/, ''));
+// 并在该行下方添加
+const path = details.version;
+```
+
+- 在控制台中转到 /node_modules/electron
+- 执行
+
+```
+node install.js
+```
+
+- 退回到根目录，执行
+
+```
+npm run rebuild
+```
+
 #### 启动服务
 
 ```

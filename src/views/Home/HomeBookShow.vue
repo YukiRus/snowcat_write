@@ -1,16 +1,13 @@
 <template>
-  <div class="book-style" @click="c('sty')">
-    <div class="book-setting"  @click="c('set')">
-      <n-icon size="30" :depth="3">
-        <svg-icon icon="menu"></svg-icon>
-      </n-icon>
-    </div>
-    <div class="book-cover">
-      <img :src="cover" alt="" width="180" height="240">
-    </div>
-    <div class="book-name">
-      <div>{{bookname}}</div>
-      <div class="update-time">最后创作: {{updatetime}}</div>
+  <div class="book-style" >
+    <div @click="c('sty')">
+      <div class="book-cover">
+        <img :src="cover" alt="" width="180" height="240">
+      </div>
+      <div class="book-name">
+        <div>{{bookname}}</div>
+        <div class="update-time">最后创作: {{updatetime}}</div>
+      </div>
     </div>
   </div>
 </template>
@@ -26,6 +23,26 @@ export default {
     c:function(cc){
       alert(cc)
     }
+  },
+  mounted:function(){
+    const {remote} = require('electron');
+    const {Menu, MenuItem} = remote;
+ 
+    //右键餐单
+    const menu = new Menu();
+    menu.append(new MenuItem({
+        label: '放大',
+        click:function ()  {
+            console.log('item 1 clicked')
+        }
+    }));
+    menu.append(new MenuItem({type: 'separator'}));//分割线
+    menu.append(new MenuItem({label: '缩小'}));//选中
+ 
+    this.$el.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        menu.popup({window: remote.getCurrentWindow()})
+    }, false)
   }
 
 }
@@ -68,10 +85,14 @@ export default {
   width: 100%;
   text-align: center;
 }
-.book-style .book-cover{
+
+.book-style{
   position:relative;
   left:50%;
   margin-left: -90px
+}
+.book-cover{
+  margin: 0 10px;
 }
 .book-style .update-time{
   font-size: 12px;

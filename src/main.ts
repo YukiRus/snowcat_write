@@ -8,6 +8,8 @@ import store from './store'
 import NaiveUi from 'naive-ui'
 import './assets/svg.js'
 import SvgIcon from '@/components/SvgIcon.vue' // svg组件
+//引入sqlite3 
+// import sqlite3 from 'sqlite3'
 // import fluent from '@vicons/fluent'
 // import ionicons4 from '@vicons/ionicons4'
 // import ionicons5 from '@vicons/ionicons5'
@@ -22,6 +24,18 @@ const app = createApp(App)
     .use(ElementPlus)
     .use(NaiveUi)
 app.component("svg-icon", SvgIcon)
+
+/* 初始化并将indexedDB挂载到this中 */
+const iDB = window.indexedDB.open('userdatas')
+iDB.onsuccess = ()=>{
+    console.log("打开userdatas成功")
+}
+iDB.onerror = ()=>{
+    alert("获取数据失败，请重新打开程序")
+}
+app.config.globalProperties.idb = iDB
+
+
 // app.component("fluent",fluent)
 // app.component("ionicons4",ionicons4)
 // app.component("ionicons5",ionicons5)
@@ -31,3 +45,6 @@ app.component("svg-icon", SvgIcon)
 // app.component("tabler",tabler)
 
 app.mount('#app')
+
+
+
