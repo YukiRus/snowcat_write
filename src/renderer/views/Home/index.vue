@@ -18,14 +18,57 @@
       </div>
     </div>
     <el-divider style="margin: 0;"></el-divider>
-    <div id="book-list">
-      <div id="book">1</div>
+    <div id="book-list" ref="bookListRef">
+      <div id="book" v-for="bookInfo in bookList">
+        {{ bookInfo.bookName }}
+      </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { Menu, Plus } from '@element-plus/icons-vue'
+import { ref } from 'vue';
 let ElMenuIcon = Menu
+
+let bookListRef = ref(null)
+
+let bookList = [
+  {
+    bookName: 0
+  },
+  {
+    bookName: 0
+  },
+  {
+    bookName: 0
+  },
+  {
+    bookName: 0
+  },
+  {
+    bookName: 0
+  },
+  {
+    bookName: 0
+  },
+  {
+    bookName: 0
+  },
+  {
+    bookName: 0
+  },
+]
+
+const resize = function(){
+  let width = bookListRef._value.clientWidth
+  let lineMaxBookCount = parseInt((width / 220).toString())
+  console.log(lineMaxBookCount)
+
+
+}
+
+window.onresize = resize
+
 </script>
 <style scoped>
 #home{
@@ -42,11 +85,13 @@ let ElMenuIcon = Menu
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
+
 #book{
   width: 220px;
   height: 300px;
   border: 1px solid;
 }
+
 </style>
