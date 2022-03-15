@@ -110,10 +110,9 @@ const addEmpty = function(){
     bookListRender.bookList.push({isEmpty:true,bookName:0})
   }
 }
-
-window.onresize = resize
 onMounted(()=>{
   addEmpty();
+  window.onresize = resize
 })
 </script>
 <style scoped>

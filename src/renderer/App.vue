@@ -2,9 +2,12 @@
   <title-bar />
   <div style="height: 30px;"></div>
   <el-config-provider :locale="i18nt">
-    <router-view v-slot="{ Component }">
+    <div style="width: 100%;height: calc(100% - 30px)">
+      <router-view v-slot="{ Component }">
       <component :is="Component" />
     </router-view>
+    </div>
+    
   </el-config-provider>
 </template>
 
